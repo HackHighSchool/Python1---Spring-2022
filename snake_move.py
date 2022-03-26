@@ -7,6 +7,8 @@ from pygame.locals import *
 
 pygame.init()
 
+print("Welcome to Snakegame! Use arrow keys to move snake, and eat food to get longer. Hitting yourself or the walls ends the game.")
+
 d_width = 900
 d_height = 700
 display = pygame.display.set_mode((d_width, d_height))
