@@ -24,7 +24,7 @@ x = random.randint(100, 500)
 black = 0, 0, 0
 y = random.randint(100, 500)
 
-snake_body= [(0,0), (0,1)]
+snake_body= [(0,0), (0,5)]
 snake_position = [100, 50]
 
 
@@ -38,44 +38,32 @@ food_color = (28, 127, 151)
 foodx = (random.randint(100, 500))
 foody = (random.randint(100, 500))
 
-food = Rect(foodx, foody, 10, 10)
+def drawfood(foodx, foody):
+    food1 = Rect(foodx, foody, 10, 10)
+    food = pygame.draw.rect(display, food_color, food1, 4)
+
 
 snake_length = 20
 snake_width =  20
 
 #snake= Rect (x, y, snake_length, snake_length)
+eat_food = False
 
 while not end_of_game:
     x += x_change
     y += y_change
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT and x_change != -5:
+            if event.key == pygame.K_LEFT:
                 x_change = -5
                 y_change = 0
-            elif event.key == pygame.K_LEFT and x_change == -5:
-                print("left")
-                x_change = -5
-                y_change = 0
-            elif event.key == pygame.K_RIGHT and x_change != -5:
-                print("right")
+            elif event.key == pygame.K_RIGHT:
                 x_change = 5
                 y_change = 0    
-            elif event.key == pygame.K_RIGHT and x_change == -5:
-                x_change = 5
-                y_change = 0
-            elif event.key == pygame.K_UP and y_change != -5:
-                print("up")
+            elif event.key == pygame.K_UP:
                 x_change = 0
                 y_change = -5
-            elif event.key == pygame.K_UP and y_change == -5:
-                x_change = 0
-                y_change = -5
-            if event.key == pygame.K_DOWN and y_change != -5:
-                print("down")
-                x_change = 0
-                y_change = 5
-            if event.key == pygame.K_DOWN and y_change == -5:
+            if event.key == pygame.K_DOWN:
                 x_change = 0
                 y_change = 5
         
@@ -88,12 +76,19 @@ while not end_of_game:
         
 
     display.fill(black)
-
-    food = pygame.draw.rect(display, food_color, food, 1)
+    drawfood(foodx, foody)
     
     
     snake_body.append((x + x_change, y + y_change))
-    snake_body.pop(0) 
+    
+    if not eat_food:
+        snake_body.pop(0)
+    
+    if eat_food:
+        eat_food = False    
+
+
+
 
     #snake= pygame.draw.rect(display, color, newsnake) 
     for pos in snake_body:
@@ -101,27 +96,15 @@ while not end_of_game:
         pygame.draw.rect (display, color, newsnake)
         
         
-        
-
-#if pygame.Rect.collidedict(snake, food) == True:
-    #print ("Found Food!    ") 
-    
     time.sleep(0.1)
     pygame.display.update() 
 
 
-    print ("X is ", x)
-    print ("Y is ", y) 
-
-    print ("Foodx is ", foodx)
-    print ("Foody is ", foody)
-
     if (abs(x - foodx) <=10)  and (abs(y - foody) <=10):
-       #snake_length = snake_length + 5
-        x_change= 5
-        #x += x_change
-        y_change = 0
-        #y += y_change 
+        foodx = (random.randint(100, 500))
+        foody = (random.randint(100, 500))
+        drawfood(foodx, foody)
+        eat_food = True
 
 
 pygame.quit()
