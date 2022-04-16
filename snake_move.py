@@ -127,6 +127,7 @@ green = (75, 135, 69)
 X = 400
 Y = 400
 
+score_message = 'score: ' + str(score)
 
 display_surface = pygame.display.set_mode((X, Y))
 
@@ -136,7 +137,7 @@ pygame.display.set_caption('Show Text')
 font = pygame.font.Font('freesansbold.ttf', 42)
 
 
-text = font.render('put score here', True, green, white)
+text = font.render(score_message, True, green, white)
 
 textRect = text.get_rect()
 
