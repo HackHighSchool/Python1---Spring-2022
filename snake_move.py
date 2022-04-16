@@ -7,6 +7,8 @@ from pygame.locals import *
 
 pygame.init()
 
+score = 0
+
 d_width = 500
 d_height = 500
 s_length = 30
@@ -92,7 +94,8 @@ while not end_of_game:
         snake_body.pop(0)
     
     if eat_food:
-        eat_food = False    
+        eat_food = False 
+        score += 1
 
     #snake= pygame.draw.rect(display, color, newsnake) 
     for pos in snake_body:
@@ -110,6 +113,43 @@ while not end_of_game:
         drawfood(foodx, foody)
         eat_food = True
 
+
+
+import pygame
+
+pygame.init()
+
+
+white = (255, 255, 255)
+black = (0, 0, 0)
+green = (75, 135, 69)
+
+X = 400
+Y = 400
+
+
+display_surface = pygame.display.set_mode((X, Y))
+
+pygame.display.set_caption('Show Text')
+
+
+font = pygame.font.Font('freesansbold.ttf', 42)
+
+
+text = font.render('put score here', True, green, white)
+
+textRect = text.get_rect()
+
+textRect.center = (X // 2, Y // 2)
+
+while True:
+	display_surface.fill(white)
+	display_surface.blit(text, textRect)
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			pygame.quit()
+			quit()
+		pygame.display.update()
 
 
 pygame.quit()
