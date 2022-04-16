@@ -4,7 +4,6 @@ import random
 from pygame.locals import * 
 
 
-
 pygame.init()
 
 score = 0
@@ -14,6 +13,9 @@ d_height = 500
 s_length = 30
 display = pygame.display.set_mode((d_width, d_height))
 pygame.display.update()
+
+win = pygame.display.set_mode((d_width, d_height))
+largeFont = pygame.font.SysFont('comicsans', 42) # creates a font object
 
 
 end_of_game = False
@@ -96,6 +98,9 @@ while not end_of_game:
     if eat_food:
         eat_food = False 
         score += 1
+    text = largeFont.render('Score: ' + str(score), 1, (100,100,100))
+    display.blit(text, [0, 0])
+
 
     #snake= pygame.draw.rect(display, color, newsnake) 
     for pos in snake_body:
@@ -113,44 +118,6 @@ while not end_of_game:
         drawfood(foodx, foody)
         eat_food = True
 
-
-
-import pygame
-
-pygame.init()
-
-
-white = (255, 255, 255)
-black = (0, 0, 0)
-green = (75, 135, 69)
-
-X = 400
-Y = 400
-
-score_message = 'score: ' + str(score)
-
-display_surface = pygame.display.set_mode((X, Y))
-
-pygame.display.set_caption('Show Text')
-
-
-font = pygame.font.Font('freesansbold.ttf', 42)
-
-
-text = font.render(score_message, True, green, white)
-
-textRect = text.get_rect()
-
-textRect.center = (X // 2, Y // 2)
-
-while True:
-	display_surface.fill(white)
-	display_surface.blit(text, textRect)
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			pygame.quit()
-			quit()
-		pygame.display.update()
 
 
 pygame.quit()
