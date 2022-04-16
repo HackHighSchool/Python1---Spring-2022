@@ -3,12 +3,21 @@ import time
 import random
 from pygame.locals import * 
 
+
 pygame.init()
+
+score = 0
+
 d_width = 500
 d_height = 500
 s_length = 30
 display = pygame.display.set_mode((d_width, d_height))
 pygame.display.update()
+
+win = pygame.display.set_mode((d_width, d_height))
+largeFont = pygame.font.SysFont('comicsans', 42) # creates a font object
+
+
 end_of_game = False
 #Snake Functions
 color = (65, 204, 20)
@@ -63,7 +72,12 @@ while not end_of_game:
     if not eat_food:
         snake_body.pop(0)
     if eat_food:
-        eat_food = False    
+        eat_food = False 
+        score += 1
+    text = largeFont.render('Score: ' + str(score), 1, (100,100,100))
+    display.blit(text, [0, 0])
+
+
     #snake= pygame.draw.rect(display, color, newsnake) 
     for pos in snake_body:
         newsnake= Rect (pos[0], pos[1], 10, 10)
