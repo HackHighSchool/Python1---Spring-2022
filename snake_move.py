@@ -8,6 +8,7 @@ pygame.init()
 
 score = 0
 
+# Setting dimensions
 d_width = 500
 d_height = 500
 s_length = 30
@@ -19,8 +20,10 @@ largeFont = pygame.font.SysFont('comicsans', 20) # creates a font object
 
 
 end_of_game = False
+
 #Snake Functions
 color = (65, 204, 20)
+
 #Snake x and y starting coordinates
 x = random.randint(100, 400)
 black = 0, 0, 0
@@ -28,6 +31,7 @@ y = random.randint(100, 400)
 snake_body= [(x,y)]
 x_change = 0
 y_change = 0
+
 #The food is a rectangle. Rectangle Code:
 food_color = (211, 36, 36)
 foodx = (random.randint(100, 400))
@@ -37,9 +41,12 @@ def drawfood(foodx, foody):
     food = pygame.draw.rect(display, food_color, food1, 5)
 snake_length = 20
 snake_width =  20
+
 #snake= Rect (x, y, snake_length, snake_length)
 eat_food = False
 first = True
+
+# Snake can move with arrow keys
 while not end_of_game:
     x += x_change
     y += y_change
@@ -69,6 +76,8 @@ while not end_of_game:
     display.fill(black)
     drawfood(foodx, foody)
     snake_body.append((x + x_change, y + y_change))
+
+    # Keeping track of score
     if not eat_food:
         snake_body.pop(0)
     if eat_food:
