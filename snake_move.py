@@ -6,16 +6,29 @@ pygame.init()
 
 # Starting Functions
 score = 0
+<<<<<<< HEAD
+=======
+
+# Setting dimensions
+>>>>>>> 7122e6d0dfff665ea107b506dca31e1d1cc628a6
 d_width = 500
 d_height = 500
 s_length = 30
 display = pygame.display.set_mode((d_width, d_height))
 pygame.display.update()
 win = pygame.display.set_mode((d_width, d_height))
+<<<<<<< HEAD
 largeFont = pygame.font.SysFont('comicsans', 42) # creates a font object
+=======
+largeFont = pygame.font.SysFont('comicsans', 20) # creates a font object
+
+
+>>>>>>> 7122e6d0dfff665ea107b506dca31e1d1cc628a6
 end_of_game = False
+
 #Snake Functions
 color = (65, 204, 20)
+
 #Snake x and y starting coordinates
 x = random.randint(100, 400)
 black = 0, 0, 0
@@ -23,6 +36,7 @@ y = random.randint(100, 400)
 snake_body= [(x,y)]
 x_change = 0
 y_change = 0
+
 #The food is a rectangle. Rectangle Code:
 food_color = (211, 36, 36)
 foodx = (random.randint(100, 400))
@@ -32,8 +46,15 @@ def drawfood(foodx, foody):
     food = pygame.draw.rect(display, food_color, food1, 5)
 snake_length = 20
 snake_width =  20
+<<<<<<< HEAD
+=======
+
+#snake= Rect (x, y, snake_length, snake_length)
+>>>>>>> 7122e6d0dfff665ea107b506dca31e1d1cc628a6
 eat_food = False
 first = True
+
+# Snake can move with arrow keys
 while not end_of_game:
     x += x_change
     y += y_change
@@ -62,6 +83,8 @@ while not end_of_game:
     display.fill(black)
     drawfood(foodx, foody)
     snake_body.append((x + x_change, y + y_change))
+
+    # Keeping track of score
     if not eat_food:
         snake_body.pop(0)
     if eat_food:
@@ -74,7 +97,12 @@ while not end_of_game:
         pygame.draw.rect (display, color, newsnake)
     time.sleep(0.1)
     pygame.display.update() 
+<<<<<<< HEAD
     #This allows 
+=======
+    
+    # Food spawns
+>>>>>>> 7122e6d0dfff665ea107b506dca31e1d1cc628a6
     if (abs(x - foodx) <=10)  and (abs(y - foody) <=10):
         foodx = (random.randint(100, 400))
         foody = (random.randint(100, 400))
