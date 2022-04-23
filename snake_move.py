@@ -15,7 +15,7 @@ display = pygame.display.set_mode((d_width, d_height))
 pygame.display.update()
 
 win = pygame.display.set_mode((d_width, d_height))
-largeFont = pygame.font.SysFont('comicsans', 42) # creates a font object
+largeFont = pygame.font.SysFont('comicsans', 20) # creates a font object
 
 
 end_of_game = False
