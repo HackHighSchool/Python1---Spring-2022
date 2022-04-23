@@ -2,22 +2,17 @@ import pygame
 import time
 import random
 from pygame.locals import * 
-
-
 pygame.init()
 
+# Starting Functions
 score = 0
-
 d_width = 500
 d_height = 500
 s_length = 30
 display = pygame.display.set_mode((d_width, d_height))
 pygame.display.update()
-
 win = pygame.display.set_mode((d_width, d_height))
 largeFont = pygame.font.SysFont('comicsans', 42) # creates a font object
-
-
 end_of_game = False
 #Snake Functions
 color = (65, 204, 20)
@@ -37,7 +32,6 @@ def drawfood(foodx, foody):
     food = pygame.draw.rect(display, food_color, food1, 5)
 snake_length = 20
 snake_width =  20
-#snake= Rect (x, y, snake_length, snake_length)
 eat_food = False
 first = True
 while not end_of_game:
@@ -59,7 +53,6 @@ while not end_of_game:
                 y_change = 5
             first = False 
         if event.type == pygame.QUIT:
-            print ("Quit Event")
             end_of_game = True    
     if not first and (x+x_change, y+y_change) in snake_body:
         pygame.quit()
@@ -76,14 +69,12 @@ while not end_of_game:
         score += 1
     text = largeFont.render('Score: ' + str(score), 1, (100,100,100))
     display.blit(text, [0, 0])
-
-
-    #snake= pygame.draw.rect(display, color, newsnake) 
     for pos in snake_body:
         newsnake= Rect (pos[0], pos[1], 10, 10)
         pygame.draw.rect (display, color, newsnake)
     time.sleep(0.1)
     pygame.display.update() 
+    #This allows 
     if (abs(x - foodx) <=10)  and (abs(y - foody) <=10):
         foodx = (random.randint(100, 400))
         foody = (random.randint(100, 400))
