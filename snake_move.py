@@ -93,6 +93,8 @@ while not end_of_game:
         pygame.draw.rect (display, color, newsnake)
     time.sleep(0.1)
     pygame.display.update() 
+    
+    # Food spawns
     if (abs(x - foodx) <=10)  and (abs(y - foody) <=10):
         foodx = (random.randint(100, 400))
         foody = (random.randint(100, 400))
